@@ -61,8 +61,9 @@ class Overview extends React.Component {
     const propMap = makeArray(this.props.source.props);
     return propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
-        console.log('DEBUG: examples raw: ' + prop.description.split('@examples ')[1]);
-        const examples = JSON.parse('[' + prop.description.split('@examples ')[1] + ']');
+        const examplesString = prop.description.split('@examples ')[1].replace(/'/g, '"');
+        console.log('DEBUG: examples raw: ' + examplesString);
+        const examples = JSON.parse('[' + examplesString + ']');
         console.log('DEBUG: for property "' + prop.name + '" examples = ' + examples);
         return examples.map((value) => {
           return prop.name + ' = ' + value + '\n' +
