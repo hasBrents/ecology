@@ -67,7 +67,7 @@ class Overview extends React.Component {
           return prop.name + ' = ' + value + '\n' +
             '---\n' +
             '```playground\n' +
-            '<' + this.props.compname + ' ' + prop.name + '={' + value'}></' + this.props.compname + '>\n' +
+            '<' + this.props.compname + ' ' + prop.name + '={' + value + '}></' + this.props.compname + '>\n' +
             '```';
         }).join('\n\n');
       } else {
