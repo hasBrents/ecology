@@ -5,13 +5,13 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FormidableLabs/ecology.git"
+    "url": "https://github.com/hasBrents/ecology.git"
   },
   "author": "Colin Megill",
   "license": "MIT",
-  "bugs": {
+  /*"bugs": {
     "url": "https://github.com/FormidableLabs/ecology/issues"
-  },
+  },*/
   "homepage": "https://github.com/FormidableLabs/ecology",
   "scripts": {
     "postinstall": "node -e \"require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})\" || npm run build-lib",
