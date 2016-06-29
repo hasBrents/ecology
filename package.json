@@ -9,9 +9,6 @@
   },
   "author": "Colin Megill",
   "license": "MIT",
-  /*"bugs": {
-    "url": "https://github.com/FormidableLabs/ecology/issues"
-  },*/
   "homepage": "https://github.com/FormidableLabs/ecology",
   "scripts": {
     "postinstall": "node -e \"require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})\" || npm run build-lib",
