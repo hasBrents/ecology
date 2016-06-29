@@ -10,7 +10,7 @@ const makeArray = (obj) =>
 class Overview extends React.Component {
   constructor(...args) {
     super(...args);
-    if (typeof this.props.playgroundautogen !== 'undefined' &&
+    if (this.props.playgroundautogen &&
       typeof this.props.compname === 'undefined') {
       throw new Error('compname must be defined when playgroundautogen is set to true');
     }
