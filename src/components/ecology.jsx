@@ -17,6 +17,7 @@ export default class Ecology extends React.Component {
       <div className="Ecology">
         <div className="Overview">
           <Overview
+            compname={this.props.compname}
             markdown={this.props.overview}
             scope={this.props.scope}
             playgroundautogen={this.props.playgroundautogen}
@@ -30,6 +31,7 @@ export default class Ecology extends React.Component {
 }
 
 Ecology.propTypes = {
+  compname: React.PropTypes.string,
   overview: React.PropTypes.string,
   playgroundautogen: React.PropTypes.bool,
   playgroundtheme: React.PropTypes.string,
