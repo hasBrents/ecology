@@ -98,7 +98,7 @@ class Overview extends React.Component {
   }
   autogenMarkdown() {
     const title = 'Interactive Docs for ' + this.props.compname +
-      (this.props.sassy ? ' (sassy=true)');
+      (this.props.sassy ? ' (sassy=true)' : '');
     const propMap = makeArray(this.props.source.props);
     return title + '\n===\n\n' + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
