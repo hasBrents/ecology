@@ -26,7 +26,7 @@ const markdownEscape = (markdown) => {
 };
 
 const sassify = (name, value) => {
-  let options = [];
+  let options;
   if (value === 'true' || value === 'false') {
     options = [
       'You think we can\'t make %1 %2?! Sit yo\'self down and watch:',
@@ -38,7 +38,7 @@ const sassify = (name, value) => {
       'Let\'s throw a %1 on this...',
     ];
   }
-  const index = Math.floor(Math.random * options.length);
+  const index = Math.floor(Math.random() * options.length);
   return options[index].replace(/%1/g, name).replace(/%2/g, value);
 };
 
