@@ -7,6 +7,25 @@ const makeArray = (obj) =>
   Object.keys(obj).map((key) =>
     Object.assign({name: key}, obj[key]));
 
+const markdownEscape(markdown) {
+  // based on markdown-escape by Kyle E. Mitchell, under the ISC license
+  // https://github.com/kemitchell/markdown-escape.js
+  const replacements = [
+    [ /\*/g, '\\*' ],
+    [ /#/g, '\\#' ],
+    [ /\//g, '\\/' ],
+    [ /\(/g, '\\(' ],
+    [ /\)/g, '\\)' ],
+    [ /\[/g, '\\[' ],
+    [ /\]/g, '\\]' ],
+    [ /\</g, '&lt;' ],
+    [ /\>/g, '&gt;' ],
+    [ /_/g, '\\_' ] ];
+  return replacements.reduce((string, replacement) => {
+    return string.replace(replacement[0], replacement[1]);
+  });
+};
+
 class Overview extends React.Component {
   constructor(...args) {
     super(...args);
@@ -59,16 +78,14 @@ class Overview extends React.Component {
   autogenMarkdown() {
     const title = 'Interactive Docs for ' + this.props.compname;
     const propMap = makeArray(this.props.source.props);
-    return title + '\n\n' + propMap.map((prop) => {
+    return title + '===\n\n' + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
         const examples = prop.description.split('@examples ')[1].split(', ');
-        console.log('DEBUG: for property "' + prop.name + '" examples = ' + examples);
         return examples.map((value) => {
-          const varString = '{' + value + '}';
-          return prop.name + ' = ' + value + '\n' +
+          return markdownEscape(prop.name + ' = ' + value) + '\n' +
             '---\n' +
             '```playground\n' +
-            '<' + this.props.compname + ' ' + prop.name + '=' + varString + '>' +
+            '<' + this.props.compname + ' ' + prop.name + '={' + value + '}>' +
             '</' + this.props.compname + '>\n' +
             '```';
         }).join('\n\n');
