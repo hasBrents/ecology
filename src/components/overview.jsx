@@ -7,7 +7,7 @@ const makeArray = (obj) =>
   Object.keys(obj).map((key) =>
     Object.assign({name: key}, obj[key]));
 
-const markdownEscape(markdown) {
+const markdownEscape = (markdown) => {
   // based on markdown-escape by Kyle E. Mitchell, under the ISC license
   // https://github.com/kemitchell/markdown-escape.js
   const replacements = [
