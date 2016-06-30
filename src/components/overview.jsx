@@ -35,7 +35,10 @@ const sassify = (name, value) => {
       'Try %1 = %2:',
       value === 'true'
         ? 'So you want to make your component \'%1\'?'
-        : 'A fan of the \'%1\' property? (Too bad.)',
+        : '\'%1\'? Oh heck nah!',
+      value === 'true'
+        ? 'A \'%1\' component? Treat yo self!'
+        : 'Let\'s tone down the \'%1\'-iness',
     ];
   } else {
     options = [
