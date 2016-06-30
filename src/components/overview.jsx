@@ -112,7 +112,7 @@ class Overview extends React.Component {
       } else {
         return '';
       }
-    }).join('') + '[API](#api)</div>\n\n';
+    }).join('') + '\n\n- [Component API](#api)</div>\n\n';
     const header = title + toc;
     return header + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
