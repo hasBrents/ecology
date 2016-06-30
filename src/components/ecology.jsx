@@ -25,7 +25,7 @@ export default class Ecology extends React.Component {
             sassy={this.props.sassy}
             source={this.props.source}/>
         </div>
-        <!--#ecology-docs-->
+        <a name="api"></a>
         {this.renderAPI(this.props.source)}
       </div>
     );
