@@ -75,7 +75,7 @@ class Overview extends React.Component {
       } else {
         return '';
       }
-    }).insert(0, 0, title).join('\n\n');
+    }).splice(0, 0, title).join('\n\n');
   }
   render() {
     const markdown = this.props.playgroundautogen
