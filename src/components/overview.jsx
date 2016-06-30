@@ -23,7 +23,7 @@ const markdownEscape = (markdown) => {
     [ /_/g, '\\_' ] ];
   return replacements.reduce((string, replacement) => {
     return string.replace(replacement[0], replacement[1]);
-  });
+  }, markdown);
 };
 
 class Overview extends React.Component {
