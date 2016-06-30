@@ -32,12 +32,15 @@ const sassify = (name, value) => {
       'You think we can\'t make %1 %2? Sit back and watch:',
       'Don\'t mess with Texas (but do mess with the \'%1\' property)',
       'You can even set %1 to %2:',
+      'Try %1 = %2:',
+      'You like %1?' + value === 'false' ? '(Too bad.)' : '',
     ];
   } else {
     options = [
       'Let\'s throw a %1 on this...',
       'Want a %1? The only limit is your imagination.',
       '%1 can even be %2',
+      'Try %1 = %2:',
     ];
   }
   const index = Math.floor(Math.random() * options.length);
