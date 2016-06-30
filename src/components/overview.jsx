@@ -107,7 +107,11 @@ class Overview extends React.Component {
     const title = 'Interactive Docs for ' + this.props.compname +
       (this.props.sassy ? ' (sassy=true)' : '') + '\n===\n\n';
     const toc = propMap.map((prop) => {
-      return '[' + this.props.compname + prop.name + '](#prop-' + prop.name + ')  \n';
+      if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
+        return '[' + this.props.compname + '.' + prop.name + '](#prop-' + prop.name + ')  \n';
+      } else {
+        return '';
+      }
     }).join('') + '[API](#api)\n\n';
     const header = title + toc;
     return header + propMap.map((prop) => {
