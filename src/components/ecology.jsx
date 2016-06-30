@@ -22,6 +22,7 @@ export default class Ecology extends React.Component {
             scope={this.props.scope}
             playgroundautogen={this.props.playgroundautogen}
             playgroundtheme={this.props.playgroundtheme}
+            sassy={this.props.sassy}
             source={this.props.source}/>
         </div>
         {this.renderAPI(this.props.source)}
@@ -35,10 +36,12 @@ Ecology.propTypes = {
   overview: React.PropTypes.string,
   playgroundautogen: React.PropTypes.bool,
   playgroundtheme: React.PropTypes.string,
+  sassy: React.PropTypes.bool,
   source: React.PropTypes.object,
   scope: React.PropTypes.object
 };
 
 Ecology.defaultProps = {
-  playgroundautogen: false
+  playgroundautogen: false,
+  sassy: false
 };

@@ -25,6 +25,23 @@ const markdownEscape = (markdown) => {
   }, markdown);
 };
 
+const sassify = (name, value) => {
+  let options;
+  if (value === 'true' || value === 'false') {
+    options = [
+      'You think we can\'t make %1 %2?! Sit yo\'self down and watch:',
+      'You act like you\'ve never seen a %2 %1 before!',
+      'This is how we deal with %1 in these parts.',
+    ];
+  } else {
+    options = [
+      'Let\'s throw a %1 on this...',
+    ];
+  }
+  const index = Math.floor(Math.random * options.length);
+  return options[index].replace(/%1/g, name).replace(/%2/g, value);
+}
+
 class Overview extends React.Component {
   constructor(...args) {
     super(...args);
@@ -77,11 +94,12 @@ class Overview extends React.Component {
   autogenMarkdown() {
     const title = 'Interactive Docs for ' + this.props.compname;
     const propMap = makeArray(this.props.source.props);
-    return title + '===\n\n' + propMap.map((prop) => {
+    return title + '\n===\n\n' + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
         const examples = prop.description.split('@examples ')[1].split(', ');
         return examples.map((value) => {
-          return markdownEscape(prop.name + ' = ' + value) + '\n' +
+          const desc = this.props.sassy ? sassify(prop.name, value) : prop.name + ' = ' + value;
+          return markdownEscape(desc) + '\n' +
             '---\n' +
             '```playground\n' +
             '<' + this.props.compname + ' ' + prop.name + '={' + value + '}>' +
@@ -111,6 +129,7 @@ Overview.propTypes = {
   markdown: React.PropTypes.string,
   playgroundtheme: React.PropTypes.string,
   playgroundautogen: React.PropTypes.bool,
+  sassy: React.PropTypes.bool,
   source: React.PropTypes.object,
   scope: React.PropTypes.object
 };
