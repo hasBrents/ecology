@@ -13,7 +13,6 @@ const markdownEscape = (markdown) => {
   const replacements = [
     [ /\*/g, '\\*' ],
     [ /#/g, '\\#' ],
-    [ /\//g, '\\/' ],
     [ /\(/g, '\\(' ],
     [ /\)/g, '\\)' ],
     [ /\[/g, '\\[' ],
