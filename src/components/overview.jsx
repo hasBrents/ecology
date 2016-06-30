@@ -29,13 +29,15 @@ const sassify = (name, value) => {
   let options;
   if (value === 'true' || value === 'false') {
     options = [
-      'You think we can\'t make %1 %2?! Sit yo\'self down and watch:',
-      'You act like you\'ve never seen a %2 %1 before!',
-      'This is how we deal with %1 in these parts.',
+      'You think we can\'t make %1 %2? Sit back and watch:',
+      'Don\'t mess with Texas (but do mess with the \'%1\' property)',
+      'You can even set %1 to %2:',
     ];
   } else {
     options = [
       'Let\'s throw a %1 on this...',
+      'Want a %1? The only limit is your imagination.',
+      '%1 can even be %2',
     ];
   }
   const index = Math.floor(Math.random() * options.length);
