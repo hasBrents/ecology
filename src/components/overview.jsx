@@ -33,7 +33,9 @@ const sassify = (name, value) => {
       'Don\'t mess with Texas (but do mess with the \'%1\' property)',
       'You can even set %1 to %2:',
       'Try %1 = %2:',
-      'You like the \'%1\' property?' + (value === 'false' ? ' (Too bad.)' : ''),
+      value === 'true'
+        ? 'The \'%1\' property? I\'m glad you asked.'
+        : 'A fan of the \'%1\' property? (Too bad.)',
     ];
   } else {
     options = [
