@@ -103,14 +103,21 @@ class Overview extends React.Component {
     }
   }
   autogenMarkdown() {
-    const title = 'Interactive Docs for ' + this.props.compname +
-      (this.props.sassy ? ' (sassy=true)' : '');
     const propMap = makeArray(this.props.source.props);
-    return title + '\n===\n\n' + propMap.map((prop) => {
+    const title = 'Interactive Docs for ' + this.props.compname +
+      (this.props.sassy ? ' (sassy=true)' : '') + '\n===\n\n';
+    const toc = propMap.map((prop) => {
+      return '[' + this.props.compname + prop.name + '](#props-' + prop.name + ')';
+    }).join('\\\\\n') + '[API](#api)\n\n';
+    const header = title + toc;
+    return header + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
+        const anchor = '<a name="prop-' + prop.name + '"></a>';
         const examples = prop.description.split('@examples ')[1].split(', ');
-        return examples.map((value) => {
-          const desc = this.props.sassy ? sassify(prop.name, value) : prop.name + ' = ' + value;
+        return anchor + examples.map((value) => {
+          const desc = this.props.sassy
+            ? sassify(prop.name, value)
+            : prop.name + ' = ' + value;
           return markdownEscape(desc) + '\n' +
             '---\n' +
             '```playground\n' +
