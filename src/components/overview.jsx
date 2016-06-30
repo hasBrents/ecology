@@ -108,7 +108,7 @@ class Overview extends React.Component {
       (this.props.sassy ? ' (sassy=true)' : '') + '\n===\n\n';
     const toc = '<div class="ecology-toc">' + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
-        return '[' + this.props.compname + '.' + prop.name + '](#prop-' + prop.name + ')  \n';
+        return '- [' + this.props.compname + '.' + prop.name + '](#prop-' + prop.name + ')  \n';
       } else {
         return '';
       }
