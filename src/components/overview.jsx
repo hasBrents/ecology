@@ -29,12 +29,12 @@ const sassify = (name, value) => {
   let options;
   if (value === 'true' || value === 'false') {
     options = [
-      'You think we can\'t make \'%1\' %2? Sit back and watch:',
+      'The \'%1\' property? I\'m glad you asked.',
       'Don\'t mess with Texas (but do mess with the \'%1\' property)',
       'We can even set \'%1\' to %2:',
       'Try %1 = %2:',
       value === 'true'
-        ? 'The \'%1\' property? I\'m glad you asked.'
+        ? 'So you want to make your component \'%1\'?'
         : 'A fan of the \'%1\' property? (Too bad.)',
     ];
   } else {
