@@ -61,21 +61,21 @@ class Overview extends React.Component {
     const propMap = makeArray(this.props.source.props);
     return propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
-        const examplesString = prop.description.split('@examples ')[1].replace(/'/g, '"');
-        console.log('DEBUG: examples raw: ' + examplesString);
-        const examples = JSON.parse('[' + examplesString + ']');
+        const examples = prop.description.split('@examples ')[1].split(', ');
         console.log('DEBUG: for property "' + prop.name + '" examples = ' + examples);
         return examples.map((value) => {
+          const varString = '{' + value + '}';
           return prop.name + ' = ' + value + '\n' +
             '---\n' +
             '```playground\n' +
-            '<' + this.props.compname + ' ' + prop.name + '={' + value + '}></' + this.props.compname + '>\n' +
+            '<' + this.props.compname + ' ' + prop.name + '=' + varString + '>' +
+            '</' + this.props.compname + '>\n' +
             '```';
         }).join('\n\n');
       } else {
         return '';
       }
-    }).join('\n\n');
+    }).insert(0, 0, title).join('\n\n');
   }
   render() {
     const markdown = this.props.playgroundautogen
