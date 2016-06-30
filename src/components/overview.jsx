@@ -59,7 +59,7 @@ class Overview extends React.Component {
   autogenMarkdown() {
     const title = 'Interactive Docs for ' + this.props.compname;
     const propMap = makeArray(this.props.source.props);
-    return propMap.map((prop) => {
+    return title + '\n\n' + propMap.map((prop) => {
       if ('description' in prop && prop.description.indexOf('@examples ') !== -1) {
         const examples = prop.description.split('@examples ')[1].split(', ');
         console.log('DEBUG: for property "' + prop.name + '" examples = ' + examples);
@@ -75,7 +75,7 @@ class Overview extends React.Component {
       } else {
         return '';
       }
-    }).splice(0, 0, title).join('\n\n');
+    }).join('\n\n');
   }
   render() {
     const markdown = this.props.playgroundautogen
