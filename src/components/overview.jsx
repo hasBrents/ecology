@@ -31,7 +31,7 @@ const sassify = (name, value) => {
     options = [
       'You think we can\'t make %1 %2? Sit back and watch:',
       'Don\'t mess with Texas (but do mess with the \'%1\' property)',
-      'You can even set %1 to %2:',
+      'We can even set %1 to %2:',
       'Try %1 = %2:',
       value === 'true'
         ? 'The \'%1\' property? I\'m glad you asked.'
@@ -41,7 +41,7 @@ const sassify = (name, value) => {
     options = [
       'Let\'s throw a %1 on this...',
       'Want a %1? The only limit is your imagination.',
-      '%1 can even be %2',
+      '%1 can be %2...',
       'Try %1 = %2:',
     ];
   }
